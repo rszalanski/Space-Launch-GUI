@@ -1,16 +1,6 @@
 import tkinter as tk
-from tkinter import constants
+from tkinter.constants import *
 import requests
-
-
-
-main()
-
-
-
-# Main function to be executed
-def main():
-	refreshList()
 
 
 
@@ -18,6 +8,10 @@ def main():
 def refreshList():
 	# Define window colors
 	darkblue = '#000064'
+
+
+	# Specify that 'master' is a global variable
+	global master
 
 
 	# Attempt to close any already opened window
@@ -28,9 +22,23 @@ def refreshList():
 		
 		
 	# Create main window
-	master = tk.Tk(classname="Upcoming Space Launch List")
+	master = tk.Tk(className="Upcoming Space Launch List")
 	master.configure(bg=darkblue)
 	# Create title box
-	titleBox = tk.Frame(master)
+	titleBox = tk.Frame(master, bg=darkblue)
 	titleBox.pack(side=TOP, fill=BOTH)
-	titleTxt = tk.Label(titleBox, text='Upcoming Space Launches' ,foreground='white')
+	titleTxt = tk.Label(titleBox, text='Upcoming Space Launches', foreground='white', bg=darkblue)
+	titleTxt.pack()
+
+
+
+# Main function to be executed
+def main():
+	global master
+	refreshList()
+	master.mainloop()
+	
+
+
+
+main()
