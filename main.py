@@ -16,6 +16,10 @@ def main():
 
 # Function to refresh the window by closing and re-opening it
 def refreshList():
+	# Define window colors
+	darkblue = '#000064'
+
+
 	# Attempt to close any already opened window
 	try:
 		master.destroy()
@@ -25,4 +29,8 @@ def refreshList():
 		
 	# Create main window
 	master = tk.Tk(classname="Upcoming Space Launch List")
-	
+	master.configure(bg=darkblue)
+	# Create title box
+	titleBox = tk.Frame(master)
+	titleBox.pack(side=TOP, fill=BOTH)
+	titleTxt = tk.Label(titleBox, text='Upcoming Space Launches' ,foreground='white')
