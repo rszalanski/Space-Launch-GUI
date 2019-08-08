@@ -4,6 +4,14 @@ import requests
 
 
 
+# Function to call to exit the program
+def exitProgram():
+	global master
+	master.destroy()
+	pass
+
+
+
 # Function to refresh the window by closing and re-opening it
 def refreshList():
 	# Define window colors
@@ -34,6 +42,18 @@ def refreshList():
 	# Create box containing upcoming launch info
 	launchBox = tk.Frame(master, bg='cyan', relief=SUNKEN, borderwidth=3, width=500, height=500)
 	launchBox.pack(fill=BOTH, expand=True, padx=10, pady=10)
+	
+	
+	# Create list of upcoming launches
+	
+	
+	# Create 'EXIT' and 'REFRESH' buttons
+	buttonBox = tk.Frame(master, bg=darkblue, relief=RAISED, borderwidth=2, height=50)
+	buttonBox.pack(side=BOTTOM, fill=BOTH, expand=False)
+	exitButton = tk.Button(buttonBox, bg='red', foreground='white', text='EXIT', command=exitProgram)
+	exitButton.pack(side=LEFT, fill=BOTH, expand=True)
+	refrButton = tk.Button(buttonBox, bg='green', foreground='white', text='REFRESH', command=refreshList)
+	refrButton.pack(side=RIGHT, fill=BOTH, expand=True)
 
 
 
