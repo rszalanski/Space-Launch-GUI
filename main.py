@@ -4,11 +4,27 @@ import requests
 
 
 
+# Function to add infromation from API
+def populateList():
+	global launchBox
+	
+	
+	# Create left and right columns for populating list
+	leftBox = tk.Frame(launchBox, bg='cyan', relief=FLAT, borderwidth=2, width=150)
+	leftBox.pack(side=LEFT, fill=BOTH, expand=False)
+	rightBox = tk.Frame(launchBox, bg='cyan', relief=FLAT, borderwidth=2)
+	rightBox.pack(side=RIGHT, fill=BOTH, expand=False)
+	
+	
+	# Populate list with launch information
+
+
+
 # Function to call to exit the program
 def exitProgram():
 	global master
+	# Close master window
 	master.destroy()
-	pass
 
 
 
@@ -40,11 +56,13 @@ def refreshList():
 	
 	
 	# Create box containing upcoming launch info
+	global launchBox
 	launchBox = tk.Frame(master, bg='cyan', relief=SUNKEN, borderwidth=3, width=500, height=500)
 	launchBox.pack(fill=BOTH, expand=True, padx=10, pady=10)
 	
 	
 	# Create list of upcoming launches
+	populateList()
 	
 	
 	# Create 'EXIT' and 'REFRESH' buttons
@@ -62,7 +80,6 @@ def main():
 	global master
 	refreshList()
 	master.mainloop()
-	
 
 
 
