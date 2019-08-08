@@ -18,16 +18,23 @@ def populateList():
 	rightBox.pack(side=RIGHT, fill=BOTH, expand=False)
 	
 	
-	# Populate list with launch information
+	# Initialize lists to be used for holding launch information
 	missionNameBox = []
 	missionTimeBox = []
 	missionName    = []
 	missionTime    = []
+	# Get launch information
+	response = requests.get('https://launchlibrary.net/1.4/launch?next=' + str(numLaunches))
+	jsonResponse = response.json()
+	# Populate GUI with launch information
 	for i in range(numLaunches):
+		# Create boxes to hold launch information
 		missionNameBox.append(tk.Frame(rightBox, bg='cyan', relief=RAISED, borderwidth=2, width=350))
 		missionNameBox[i].pack(fill=X, expand=False)
 		missionTimeBox.append(tk.Frame(leftBox, bg='cyan', relief=RAISED, borderwidth=2, width=150))
 		missionTimeBox[i].pack(expand=False)
+		
+		
 
 
 
