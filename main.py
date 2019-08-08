@@ -7,16 +7,27 @@ import requests
 # Function to add infromation from API
 def populateList():
 	global launchBox
+	# Number of launches to show
+	numLaunches = 20
 	
 	
 	# Create left and right columns for populating list
-	leftBox = tk.Frame(launchBox, bg='cyan', relief=FLAT, borderwidth=2, width=150)
+	leftBox = tk.Frame(launchBox, bg='cyan', relief=RAISED, borderwidth=2, width=150)
 	leftBox.pack(side=LEFT, fill=BOTH, expand=False)
-	rightBox = tk.Frame(launchBox, bg='cyan', relief=FLAT, borderwidth=2)
+	rightBox = tk.Frame(launchBox, bg='cyan', relief=RAISED, borderwidth=2, width=350)
 	rightBox.pack(side=RIGHT, fill=BOTH, expand=False)
 	
 	
 	# Populate list with launch information
+	missionNameBox = []
+	missionTimeBox = []
+	missionName    = []
+	missionTime    = []
+	for i in range(numLaunches):
+		missionNameBox.append(tk.Frame(rightBox, bg='cyan', relief=RAISED, borderwidth=2, width=350))
+		missionNameBox[i].pack(fill=X, expand=False)
+		missionTimeBox.append(tk.Frame(leftBox, bg='cyan', relief=RAISED, borderwidth=2, width=150))
+		missionTimeBox[i].pack(expand=False)
 
 
 
