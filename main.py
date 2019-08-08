@@ -31,9 +31,11 @@ def populateList():
 	
 	# Create left and right columns for populating list
 	leftBox = tk.Frame(launchBox, bg='cyan', relief=RAISED, borderwidth=2, width=150)
-	leftBox.pack(side=LEFT, fill=BOTH, expand=False)
+	leftBox.pack(side=LEFT, fill=Y, expand=False)
 	rightBox = tk.Frame(launchBox, bg='cyan', relief=RAISED, borderwidth=2, width=350)
-	rightBox.pack(side=RIGHT, fill=BOTH, expand=False)
+	rightBox.pack(side=RIGHT, fill=BOTH, expand=True)
+	rightTopBox = tk.Frame(rightBox, bg='cyan')
+	rightTopBox.pack(side=TOP, fill=X, expand=False)
 	
 	
 	# Initialize lists to be used for holding launch information
@@ -49,10 +51,10 @@ def populateList():
 	# Populate GUI with launch information
 	for i in range(numLaunches):
 		# Create boxes to hold launch information
-		missionNameBox.append(tk.Frame(rightBox, bg='cyan', relief=RAISED, borderwidth=2, height=5))
-		missionNameBox[i].pack(fill=X, expand=False)
-		missionTimeBox.append(tk.Frame(leftBox, bg='cyan', relief=RAISED, borderwidth=2, height=5))
-		missionTimeBox[i].pack(expand=False)
+		missionNameBox.append(tk.Frame(rightTopBox, bg='cyan', relief=RAISED, borderwidth=2, height=5))
+		missionNameBox[i].pack(fill=X, expand=True)
+		missionTimeBox.append(tk.Frame(leftBox, bg='cyan', relief=RAISED, borderwidth=2, height=5, width=150))
+		missionTimeBox[i].pack(fill=X, expand=False)
 		# Fill created boxes with launch information
 		missionName.append(tk.Label(missionNameBox[i], bg='cyan', foreground='black', text=getName(launchList, i)))
 		missionName[i].pack()
