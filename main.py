@@ -4,6 +4,24 @@ import requests
 
 
 
+# Funtion to get time of a given launch number from launch list
+def getTime(launchList, launchNum):
+	# Get information for individual launch
+	launch = launchList[launchNum]
+	# Get time from launch information
+	return launch.get('net')
+
+
+
+# Funtion to get name of given launch number from launch list
+def getName(launchList, launchNum):
+	# Get information for individual launch
+	launch = launchList[launchNum]
+	# Get name from launch information
+	return launch.get('name')
+
+
+
 # Function to add infromation from API
 def populateList():
 	global launchBox
@@ -23,16 +41,23 @@ def populateList():
 	missionTimeBox = []
 	missionName    = []
 	missionTime    = []
-	# Get launch information
+	launchList     = []
+	# Get launch information list
 	response = requests.get('https://launchlibrary.net/1.4/launch?next=' + str(numLaunches))
 	jsonResponse = response.json()
+	launchList = jsonResponse.get('launches')
 	# Populate GUI with launch information
 	for i in range(numLaunches):
 		# Create boxes to hold launch information
-		missionNameBox.append(tk.Frame(rightBox, bg='cyan', relief=RAISED, borderwidth=2, width=350))
+		missionNameBox.append(tk.Frame(rightBox, bg='cyan', relief=RAISED, borderwidth=2, height=5))
 		missionNameBox[i].pack(fill=X, expand=False)
-		missionTimeBox.append(tk.Frame(leftBox, bg='cyan', relief=RAISED, borderwidth=2, width=150))
+		missionTimeBox.append(tk.Frame(leftBox, bg='cyan', relief=RAISED, borderwidth=2, height=5))
 		missionTimeBox[i].pack(expand=False)
+		# Fill created boxes with launch information
+		missionName.append(tk.Label(missionNameBox[i], bg='cyan', foreground='black', text=getName(launchList, i)))
+		missionName[i].pack()
+		missionTime.append(tk.Label(missionTimeBox[i], bg='cyan', foreground='black', text=getTime(launchList, i)))
+		missionTime[i].pack()
 		
 		
 
